@@ -9,58 +9,49 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
      <meta charset="utf-8"/>
   <script src="https://unpkg.com/three@0.137.4/build/three.min.js"></script>
+  <script src="https://unpkg.com/three@0.137.4/examples/js/controls/OrbitControls.js"></script>
   <script>
     // ページの読み込みを待つ
-    // ページの読み込みを待つ
-window.addEventListener('DOMContentLoaded', init);
+    window.addEventListener('DOMContentLoaded', init);
 
-// サイズを指定
-const width = 960;
-const height = 540;
+    function init() {
+      // サイズを指定
+      const width = 960;
+      const height = 540;
 
-function init() {
-  // レンダラーを作成
-  const renderer = new THREE.WebGLRenderer({
-    canvas: document.querySelector('#myCanvas')
-  });
-  renderer.setSize(width, height);
+      // レンダラーを作成
+      const canvasElement = document.querySelector('#myCanvas');
+      const renderer = new THREE.WebGLRenderer({
+        canvas: canvasElement,
+      });
+      renderer.setSize(width, height);
 
-  // シーンを作成
-  const scene = new THREE.Scene();
+      // シーンを作成
+      const scene = new THREE.Scene();
 
-  // カメラを作成
-  const camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
-  camera.position.set(0, 0, +1000);
+      // カメラを作成
+      const camera = new THREE.PerspectiveCamera(45, width / height);
+      // カメラの初期座標を設定
+      camera.position.set(0, 0, 1000);
 
-  // 球体を作成
-  const geometry = new THREE.SphereGeometry(300, 30, 30);
-  const material = new THREE.MeshStandardMaterial({color: 0xFF0000});
-  // メッシュを作成
-  const mesh = new THREE.Mesh(geometry, material);
-  // 3D空間にメッシュを追加
-  scene.add(mesh);
+      // カメラコントローラーを作成
+      const controls = new THREE.OrbitControls(camera, canvasElement);
 
-  // 平行光源
-  const directionalLight = new THREE.DirectionalLight(0xFFFFFF);
-  directionalLight.position.set(1, 1, 1);
-  // シーンに追加
-  scene.add(directionalLight);
+      // 形状とマテリアルからメッシュを作成します
+      const mesh = new THREE.Mesh(new THREE.BoxGeometry(300, 300, 300), new THREE.MeshNormalMaterial());
+      scene.add(mesh);
 
-  tick();
+      tick();
 
-  // 毎フレーム時に実行されるループイベントです
-  function tick() {
-    // メッシュを回転させる
-    mesh.rotation.y += 0.01;
-    // レンダリング
-    renderer.render(scene, camera);
-
-    requestAnimationFrame(tick);
-  }
-}
+      // 毎フレーム時に実行されるループイベントです
+      function tick() {
+        // レンダリング
+        renderer.render(scene, camera);
+        requestAnimationFrame(tick);
+      }
+    }
   </script>
   </head>
-
   <body>
     <%= yield %>
   </body>
