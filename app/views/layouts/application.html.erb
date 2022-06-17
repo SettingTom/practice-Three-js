@@ -11,7 +11,8 @@
   <script src="https://unpkg.com/three@0.137.4/build/three.min.js"></script>
   <script src="https://unpkg.com/three@0.137.4/examples/js/controls/OrbitControls.js"></script>
   <script src="https://unpkg.com/three@0.137.4/examples/js/loaders/STLLoader.js"></script>
-    <script>
+  <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <%# <script>
       // ページの読み込みを待つ
       window.addEventListener('DOMContentLoaded', init);
 
@@ -53,8 +54,26 @@
         }
       }
     </script>
+
+        <script src="stl_viewer.min.js"></script>        
+        <script>
+            var stl_viewer=new StlViewer
+            (
+                document.getElementById("stl_cont"),
+                {
+                    models:
+                    [
+                        {filename:"counter.stl"}
+                    ]
+                }
+            );
+        </script> %>
+
   </head>
   <body>
+    <py-script>
+      print('hello world')
+    </py-script>
     <%= yield %>
   </body>
 </html>
