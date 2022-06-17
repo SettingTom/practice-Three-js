@@ -72,19 +72,27 @@
   </head>
   <body>
     <py-env>
-        - numpy
+        <%# - numpy %>
+        - pyvista
     </py-env>
     <py-script>
       print('hello world')
 
-      import numpy as np
+      <%# import numpy as np
 
       arr1 = np.array([[1,2],[3,4]])
       arr2 = np.array([[5,6],[7,8]])
       arr3 = arr1.dot(arr2)
       print('arr1:',arr1)
       print('arr2:',arr2)
-      print('arr3:',arr3)
+      print('arr3:',arr3) %>
+
+
+      import pyvista as pv
+      
+      filename = 'counter.stl'
+      mesh = pv.read(filename)
+      cpos = mesh.plot()
     </py-script>
     <%= yield %>
   </body>
