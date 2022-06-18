@@ -12,6 +12,7 @@
   <script src="https://unpkg.com/three@0.137.4/examples/js/controls/OrbitControls.js"></script>
   <script src="https://unpkg.com/three@0.137.4/examples/js/loaders/STLLoader.js"></script>
   <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+  <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
     <%# <script>
       // ページの読み込みを待つ
       window.addEventListener('DOMContentLoaded', init);
@@ -72,11 +73,17 @@
   </head>
   <body>
     <py-env>
-        <%# - numpy %>
-        - pyvista
+        <%# - numpy
+        - numpy-stl
+        - matplotlib
+        - pandas
+        - stl
+        - meth %>
+        <%# - mplot3d %>
+        <%# - pyvista %>
     </py-env>
     <py-script>
-      print('hello world')
+      <%# print('hello world') %>
 
       <%# import numpy as np
 
@@ -88,11 +95,30 @@
       print('arr3:',arr3) %>
 
 
-      import pyvista as pv
+      <%# import pyvista as pv
       
       filename = 'counter.stl'
       mesh = pv.read(filename)
       cpos = mesh.plot()
+ %>
+
+      <%# from stl import mesh
+      from mpl_toolkits import mplot3d
+      import matplotlib.pyplot as plt
+      import numpy as np
+
+      def show(data):
+          figure = plt.figure()
+          axes = mplot3d.Axes3D(figure)
+
+          axes.add_collection3d(mplot3d.art3d.Poly3DCollection(data.vectors))
+          scale = data.points.flatten(-1)
+          axes.auto_scale_xyz(scale, scale, scale)
+          plt.show()
+
+      data = mesh.Mesh.from_file('counter.stl')
+
+      show(data) %>
     </py-script>
     <%= yield %>
   </body>
