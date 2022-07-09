@@ -14,6 +14,16 @@
   <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
   <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/105/three.min.js"></script>
+      <%# <py-env> %>
+        <%# - numpy %>
+        <%# - numpy-stl %>
+        <%# - matplotlib %>
+        <%# - pandas %>
+        <%# - stl %>
+        <%# - meth %>
+        <%# - mplot3d %>
+        <%# - pyvista %>
+    <%# </py-env> %>
     <%# <script>
       // ページの読み込みを待つ
       window.addEventListener('DOMContentLoaded', init);
@@ -70,7 +80,8 @@
                 }
             );
         </script> %>
-    <table>
+
+    <%# <table>
           <tr><td align = right>STL file :
       <td><form name="test">
           <input type="file" id="selfile"><br>
@@ -239,21 +250,11 @@
 	      }
 	  }
       },false);
-    </script>
+    </script> %>
 
   </head>
   <body>
-    <py-env>
-        <%# - numpy
-        - numpy-stl
-        - matplotlib
-        - pandas
-        - stl
-        - meth %>
-        <%# - mplot3d %>
-        <%# - pyvista %>
-    </py-env>
-    <py-script>
+    <%# <py-script> %>
       <%# print('hello world') %>
 
       <%# import numpy as np
@@ -289,8 +290,10 @@
 
       data = mesh.Mesh.from_file('counter.stl')
 
-      show(data) %>
-    </py-script>
+      show(data)
+    </py-script> %>
+
+
     <%= yield %>
   </body>
 </html>
