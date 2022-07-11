@@ -2,38 +2,9 @@
 <html>
   <head>
     <title>PracticeThreeJs</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
      <meta charset="utf-8"/>
-  <script src="https://unpkg.com/three@0.137.4/build/three.min.js"></script>
-  <script src="https://unpkg.com/three@0.137.4/examples/js/controls/OrbitControls.js"></script>
-  <script src="https://unpkg.com/three@0.137.4/examples/js/loaders/STLLoader.js"></script>
-  <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
-  <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/105/three.min.js"></script>
-   <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
   </head>
   <body>
     <%= yield %>
-       <div class="row">
-        <a class="waves-effect waves-light btn" id="runpython">Python実行</a>
-        <ul class="collection" id="collection"></ul>
-    </div>
-
-    <!-- Modal Structure -->
-    <div id="modal1" class="modal">
-    </div>
-        <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script type="text/javascript" src="./index.js"></script>
-    <script type="text/javascript" src="/eel.js"></script>
   </body>
 </html>
