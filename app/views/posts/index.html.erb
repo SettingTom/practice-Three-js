@@ -1,3 +1,10 @@
-<?PHP
+<%# <?PHP
 echo shell_exec("python script.py");
-?
+? %>
+
+<%=
+f = File.open("app/views/posts/test.txt", "r")
+message = f.read
+f.close
+message
+ %>
